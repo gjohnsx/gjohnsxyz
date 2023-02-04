@@ -1,0 +1,35 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+import plagueTweet from './plague-nft-data.webp'
+
+export const meta = {
+  author: 'Gregory Johns',
+  date: '2022-04-25',
+  title: 'Collecting Twitter Data for The Plague NFT',
+  description:
+    'Using Python and Tweepy to gather The Plague NFT Twitter Like and Retweet Data in order to facilitate minting whitelist.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Using Python and Tweepy to gather The Plague NFT Twitter Like and Retweet Data in order to facilitate minting whitelist.
+
+<Image src={plagueTweet} alt="@ThePlagueNFT Twitter Account announcing my data collection contribution." />
+
+## What I did
+
+I wrote some loops so The Plague NFT could pull user engagement data from their tweets during their whitelist giveaway process.
+
+The founder was able to see which users were engaged with their tweets and to what degree.
+
+This helped them select users to add to the whitelist.
+
+## Web App Version
+
+I turned it into a web app so anyone can use it.
+Enter a Tweet, and it will return a list of users who liked or retweeted it.
+Then you can export the data to a CSV file.
+
+You can find it here: [https://tweets.gjohns.xyz/](https://tweets.gjohns.xyz/)
+
+[Visit GitHub](https://github.com/gjohnsx/twitter-likers)

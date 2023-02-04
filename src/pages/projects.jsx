@@ -6,42 +6,40 @@ import { SimpleLayout } from '@/components/SimpleLayout'
 import azukiSalesLogo from '@/images/logos/azukisaleslogo.png'
 import thePlagueNftLogo from '@/images/logos/plaguenftlogo.jpg'
 import spaceChatLiveLogo from '@/images/logos/spaceChatLiveLogo.png'
+import lickByNeckLogo from '@/images/logos/lickbynecklogo.png'
 
 const projects = [
+  {
+    name: 'SpaceChat Live',
+    description:
+    'Live Chat, Q&A, and Speaker Ratings for Twitter Spaces.',
+    link: { href: 'https://spacechat.live', label: 'spacechat.live' },
+    logo: spaceChatLiveLogo,
+    tags: ['Supabase', 'Next.js', 'Tailwind CSS', 'Twitter']
+  },
   {
     name: 'Azuki Twitter Sales Bot',
     description:
       'Tweeting all Azuki and Beanz sales.',
     link: { href: 'https://twitter.com/azukisales', label: '@AzukiSales on Twitter' },
     logo: azukiSalesLogo,
-  },
-  {
-    name: 'SpaceChat Live',
-    description:
-      'Live Chat, Q&A, and Speaker Ratings for Twitter Spaces.',
-    link: { href: 'https://spacechat.live', label: 'spacechat.live' },
-    logo: spaceChatLiveLogo,
+    tags: ['Python', 'Twitter']
   },
   {
     name: 'The Plague NFT Twitter Data Collection',
     description:
       'Extracting user info for The Plague NFT whitelist.',
-    link: { href: 'https://tweets.gjohns.xyz/', label: 'Web app version' },
+    link: { href: 'https://tweets.gjohns.xyz/', label: 'Visit web app version' },
     logo: thePlagueNftLogo,
+    tags: ['Python', 'Next.js', 'Twitter']
   },
   {
-    name: 'cosmOS',
+    name: 'Guitar Tabs Web Scraper',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: azukiSalesLogo,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: azukiSalesLogo,
+      'Simple fullstack app to scrape and organize guitar tabs from LickByNeck',
+    link: { href: 'https://guitar-tabs.vercel.app/', label: 'Visit web app' },
+    logo: lickByNeckLogo,
+    tags: ['Next.js', 'Heroku', 'Puppeteer']
   },
 ]
 
@@ -66,9 +64,10 @@ export default function Projects() {
           content="Things I’ve made trying to put my dent in the universe."
         />
       </Head>
+
       <SimpleLayout
         title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. I'm currently interested in building tools for Twitter and for Network State infrastructure."
       >
         <ul
           role="list"
@@ -94,7 +93,11 @@ export default function Projects() {
                   {project.name}
                 </Card.Link>
               </h2>
+
               <Card.Description>{project.description}</Card.Description>
+              
+              <Card.Tags>{project.tags}</Card.Tags>
+
               <p className="relative z-10 flex mt-6 text-sm font-medium transition text-zinc-400 group-hover:text-teal-500 dark:text-zinc-200">
                 <LinkIcon className="flex-none w-6 h-6" />
                 <span className="ml-2">{project.link.label}</span>
