@@ -7,7 +7,7 @@ import azukiSalesLogo from '@/images/logos/azukisaleslogo.png'
 import thePlagueNftLogo from '@/images/logos/plaguenftlogo.jpg'
 import spaceChatLiveLogo from '@/images/logos/spaceChatLiveLogo.png'
 import lickByNeckLogo from '@/images/logos/lickbynecklogo.png'
-import balajiptLogo from '@/images/logos/balajiptlogo.jpg'
+import balajiptLogo from '@/images/logos/balajiptLogo.jpg'
 
 const projects = [
   {
