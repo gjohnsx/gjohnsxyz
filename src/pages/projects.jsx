@@ -7,8 +7,17 @@ import azukiSalesLogo from '@/images/logos/azukisaleslogo.png'
 import thePlagueNftLogo from '@/images/logos/plaguenftlogo.jpg'
 import spaceChatLiveLogo from '@/images/logos/spaceChatLiveLogo.png'
 import lickByNeckLogo from '@/images/logos/lickbynecklogo.png'
+import balajiptLogo from '@/images/logos/balajiptlogo.jpg'
 
 const projects = [
+  {
+    name: 'BalaJIPT',
+    description:
+    'ChatGPT Balaji Srinivisan\'s \"The Network State\".',
+    link: { href: 'https://balajipt.com', label: 'balajipt.com' },
+    logo: balajiptLogo,
+    tags: ['Supabase', 'pgvector', 'Next.js', 'ChatGPT']
+  },
   {
     name: 'SpaceChat Live',
     description:
@@ -61,13 +70,13 @@ export default function Projects() {
         <title>Projects - Gregory Johns</title>
         <meta
           name="description"
-          content="Things I’ve made trying to put my dent in the universe."
+          content="Things I\'ve made trying to put my dent in the universe."
         />
       </Head>
 
       <SimpleLayout
         title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. I'm currently interested in building tools for Twitter and for Network State infrastructure."
+        intro="I've worked on many projects over the years, but these are the apps that demonstrate my fullstack programming skills. I'm currently interested in building tools for Twitter and for Network State infrastructure."
       >
         <ul
           role="list"
