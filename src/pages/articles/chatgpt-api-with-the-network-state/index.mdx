@@ -17,20 +17,20 @@ ChatGPT API with [Balaji Srinivisan's](https://twitter.com/balajis) [The Network
 
 ## OpenAI Embeddings
 
-OpenAI offers an API that generates embeddings for a string of text using its language model. We used the `text-embedding-ada-002` model to generate 1536-dimensional embeddings for the entire text of "The Network State". These embeddings represent the "meaning" of the text in a vector of floating-point numbers.
+OpenAI offers an API that generates embeddings for a string of text using its language model. I used the `text-embedding-ada-002` model to generate 1536-dimensional embeddings for the entire text of "The Network State". These embeddings represent the "meaning" of the text in a vector of floating-point numbers.
 
 ## pgvector
 
-To store and query vector embeddings within our database, we used `pgvector`, an extension for PostgreSQL. With `pgvector`, we were able to store the embeddings for "The Network State" and build a search feature that prompts users for input, generates a one-time embedding, and performs a similarity search against our pre-processed embeddings. We then return the most similar embeddings to the user.
+To store and query vector embeddings within our database, I used `pgvector`, an extension for PostgreSQL. With `pgvector`, I was able to store the embeddings for "The Network State" and build a search feature that prompts users for input, generates a one-time embedding, and performs a similarity search against our pre-processed embeddings. I then return the most similar embeddings to the user.
 
 ## Using ChatGPT API for Conversations
 
-Finally, we used the ChatGPT API to allow users to have a conversation about the material in "The Network State". ChatGPT API uses the new `gpt-3.5-turbo` model, which is 10 times cheaper than the previous GPT 3 model. 
-To make the conversation with ChatGPT more natural and contextually relevant, we pass in the entire conversation history to the API. By providing ChatGPT with the full conversation history, the model can build on previous statements, understand the context of the conversation, and provide more accurate and personalized responses.
+Finally, I used the ChatGPT API to allow users to have a conversation about the material in "The Network State". ChatGPT API uses the new `gpt-3.5-turbo` model, which is 10 times cheaper than the previous GPT 3 model. 
+To make the conversation with ChatGPT more natural and contextually relevant, I pass in the entire conversation history to the API. By providing ChatGPT with the full conversation history, the model can build on previous statements, understand the context of the conversation, and provide more accurate and personalized responses.
 
 ## Supabase Edge Functions with Deno
 
-We used [Supabase Edge Functions](https://supabase.com/docs/guides/functions) to run our search and ChatGPT API queries. Edge functions are serverless functions that run on Supabase's infrastructure. The results from OpenAI stream directly to the user's browser, enabling a super fast experience when chatting with the app.
+I used [Supabase Edge Functions](https://supabase.com/docs/guides/functions) to run our search and ChatGPT API queries. Edge functions are serverless functions that run on Supabase's infrastructure. The results from OpenAI stream directly to the user's browser, enabling a super fast experience when chatting with the app.
 
 ## The Future
 
