@@ -59,7 +59,7 @@ Card.Tags = function CardTags({ as: Component = 'ul', children }) {
       className="relative z-20 flex flex-wrap mt-4 text-sm font-medium text-zinc-500 dark:text-zinc-200 gap-x-1"
     >
       {children.map((tag) => (
-        <li key={tag} className="px-2 py-1 border rounded-full border-zinc-100 bg-zinc-200/50">{tag}</li>
+        <li key={tag} className="px-2 py-1 border rounded-full border-zinc-100 dark:border-zinc-900 bg-zinc-200/50 dark:bg-zinc-950">{tag}</li>
       ))}
     </ul>
   )
