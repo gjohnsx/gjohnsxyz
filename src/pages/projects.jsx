@@ -8,8 +8,17 @@ import thePlagueNftLogo from '@/images/logos/plaguenftlogo.jpg'
 import spaceChatLiveLogo from '@/images/logos/spaceChatLiveLogo.png'
 import lickByNeckLogo from '@/images/logos/lickbynecklogo.png'
 import balajiptLogo from '@/images/logos/balajiptLogo.jpg'
+import dapLogo from '@/images/photos/deadavatars.png'
 
 const projects = [
+  {
+    name: 'Dead Avatars Gallery',
+    description:
+    'NFT Image Gallery for the Dead Avatars Project.',
+    link: { href: 'https://dap-gallery.vercel.app/', label: 'dap-gallery.vercel.app' },
+    logo: dapLogo,
+    tags: ['Supabase', 'Next.js']
+  },
   {
     name: 'BalaJIPT',
     description:
