@@ -1,0 +1,121 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import Image from 'next/image'
+
+export const meta = {
+  author: 'Gregory Johns',
+  date: '2023-04-10',
+  title:
+    'Building an NFT Image gallery for The Dead Avatars Project with Next.js and Supabase.',
+  description:
+    'Explore the process of building an interactive NFT image gallery for the Dead Avatars Project, harnessing the power of Next.js, TypeScript, Supabase, Tailwind CSS, and Framer Motion. This article provides insights into modern frontend development practices in the evolving realm of digital art and NFTs.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+The growing interest in non-fungible tokens (NFTs) has seen a surge in projects, and one such exciting initiative is the Dead Avatars Project. A significant aspect of this project is its NFT image gallery, which requires a dynamic and visually compelling frontend. This article focuses on my experience building this frontend using a robust tech stack: Next.js, TypeScript, Supabase, Tailwind CSS, and Framer Motion.
+
+The Dead Avatars gallery project required the ability to fetch and display a variety of avatar data. Leveraging the power of Next.js and TypeScript, I built a highly interactive interface capable of fetching data from Supabase, filtering avatars based on traits, and implementing infinite scroll functionality.
+
+## Architectural Insight
+
+Before diving into the details, let's have a look at an integral piece of the code:
+
+```javascript
+export default function Home() {
+  ...
+  const { supabase } = useSupabase();
+  ...
+  useEffect(() => {
+    if (isInView) {
+      loadMoreDaps(offset);
+      setIsInView(false);
+    }
+  }, [isInView]);
+  ...
+  const handleScroll = () => {
+    if (containerRef.current && typeof window !== "undefined") {
+      const container = containerRef.current;
+      const { bottom } = container.getBoundingClientRect();
+      const { innerHeight } = window;
+      setIsInView((prev) => bottom <= innerHeight);
+    }
+  };
+  ...
+}
+```
+
+This piece of code demonstrates the implementation of the infinite scroll functionality. It involves the use of a custom useEffect hook that triggers the loadMoreDaps function whenever the isInView state variable is true. The handleScroll function sets the isInView variable to true when the bottom of the container reaches the edge of the viewport, triggering the loading of more avatars.
+
+## Crafting the Interface with Tailwind CSS and Framer Motion
+
+A modern and user-friendly interface was paramount. Tailwind CSS allowed me to construct a highly customizable and responsive design. The utility-first philosophy of Tailwind CSS made it incredibly flexible to tailor each component according to the design requirements. With its simplicity, it was easy to build the sidebar and avatar cards, ensuring they were both functional and visually appealing.
+
+To enhance the user experience, I added animations using Framer Motion. It breathed life into the interface by providing smooth transitions as the users navigated through the gallery, selected filters, or scrolled down to load more avatars.
+
+## Leveraging Supabase for Robust Data Handling
+
+Supabase, a real-time database and backend service, was essential in this project. Its user-friendly API allowed us to fetch and manipulate NFT metadata swiftly. The function fetchDapsLimited was used to fetch NFT metadata in a paginated manner, which was vital for the infinite scroll feature.
+
+```javascript
+const fetchDapsLimited = async (offset: number, limit: number) => {
+  const from = offset * PAGE_COUNT;
+  const to = from + PAGE_COUNT - 1;
+
+  const { data } = await supabase!
+    .from("nft_metadata")
+    .select("*")
+    .range(from, to)
+    .order("token_id", { ascending: true });
+
+  return data || [];
+};
+```
+
+## Implementing Sidebar Filters with Headless UI Comboboxes
+
+The sidebar filters are a crucial component to enhance the usability of our NFT gallery. Using a combination of Next.js, TypeScript, and Headless UI Comboboxes, we've constructed interactive filters that are not only intuitive but also flexible in handling a variety of filter conditions.
+
+Headless UI is a collection of completely unstyled, fully accessible UI components for React, Vue, and Angular. In our case, we've used Headless UI Comboboxes to implement the sidebar filters. Here's an interesting segment of our code demonstrating this:
+
+```javascript
+{Object.entries(traits).map(([traitType, options]) => {
+  const filteredTypes =
+    queries[traitType] === ""
+      ? options
+      : options.filter((type) => {
+          return type.value
+            .toLowerCase()
+            .includes(queries[traitType].toLowerCase());
+        });
+
+  const handleInputChange =
+    (traitType: string) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const searchText = event.target.value.toLowerCase();
+      setQueries((prevQueries) => ({
+        ...prevQueries,
+        [traitType]: searchText,
+      }));
+    };
+
+  // ... [Rest of the code]
+})
+```
+
+This piece of the code shows how we handle search queries within our comboboxes. We use JavaScript's Object.entries() method to map through each of the traits in our NFT gallery. For each trait type, we filter the options based on the user's search query. If there's no search query, we display all options available for that trait type. The handleInputChange function updates the search query whenever the user types into the combobox input, providing a real-time filter experience.
+
+The complete code for the sidebar filters highlights our usage of other Headless UI components such as Disclosure for collapsible filter categories and Combobox.Options to display the filtered traits. We also maintain an interactive UI by showing the number of selected traits for each type, toggling between minus and plus icons depending on whether the filter category is expanded or collapsed, and highlighting selected traits.
+
+Through this approach, we're able to build a powerful frontend for our NFT gallery that maximizes usability and user experience.
+
+## Conclusion
+
+Creating the Dead Avatars NFT image gallery was a deeply rewarding process that utilized various modern frontend technologies. Each played a crucial role in delivering a robust, user-friendly, and aesthetically pleasing gallery.
+
+Next.js and TypeScript formed the bedrock of the frontend, providing a robust and scalable structure. Tailwind CSS delivered a beautiful and responsive design, while Framer Motion added interactive animations to enrich the user experience. Supabase, with its seamless real-time data handling capabilities, tied everything together.
+
+Overall, this project highlights the power of these technologies in delivering a state-of-the-art frontend for an NFT image gallery, paving the way for future projects in the burgeoning world of digital art.
+
+## View the Dead Avatars NFT Image Gallery
+
+The Dead Avatars NFT image gallery is now live! You can view it [here](https://dap-gallery.vercel.app/).
